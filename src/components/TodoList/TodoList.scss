@@ -1,0 +1,70 @@
+@import '../../styles/variables';
+@import '../../styles/colors';
+@import '../../styles/placeholders';
+
+.TodoList {
+  @extend %list;
+
+}
+
+.TodoList__item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border: 1px solid $red;
+  border-radius: 4px;
+  margin-bottom: 10px;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+
+    background-color: $green;
+
+    transform: scaleX(0);
+    transition: transform 250ms $timing-function;
+  }
+
+  &--completed::before {
+    transform: scaleX(1);
+  }
+}
+
+.TodoList__text {
+  margin-top: 0;
+  margin-bottom: 0;
+  padding: 12px;
+  border: none;
+  width: 100%;
+  
+  &:focus {
+    border: 0.5px solid rgba(63, 63, 63, 0.2);;
+    outline: none;
+  }
+}
+
+.TodoList__btn {
+  @extend %button;
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  border-radius: 4px;
+  padding: 12px 12px;
+  background-color: $red-accent;
+  color: $white;
+  font-weight: 500;
+
+  &:hover,
+  &:focus {
+    background-color: $indigo-accent;
+  }
+
+  &:active {
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+  }
+}
